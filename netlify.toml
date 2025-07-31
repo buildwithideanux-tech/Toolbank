@@ -126,13 +126,8 @@
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
-# Build plugins configuration
-[[plugins]]
-  package = "netlify-plugin-sitemap"
-  [plugins.inputs]
-    baseUrl = "https://toolbank.netlify.app"
-    pretty = true
-    trailingSlash = false
+# Sitemap is handled by next-sitemap in the build process
+# No additional plugin needed
 
 # Performance optimizations
 [build.processing]
