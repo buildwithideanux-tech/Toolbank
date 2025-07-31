@@ -108,7 +108,7 @@ export default function Home() {
                 <div className="flex flex-wrap justify-center gap-8 mb-10">
                   <div className="text-center">
                     <div className="text-3xl font-bold text-white">18+</div>
-                    <div className="text-blue-200 text-sm">Tools Available</div>
+                    <div className="text-blue-200 text-sm">Professional Tools</div>
                   </div>
                   <div className="text-center">
                     <div className="text-3xl font-bold text-white">100%</div>
