@@ -6,6 +6,10 @@
   NODE_VERSION = "18"
   NPM_VERSION = "9"
 
+# Disable automatic deployments - manual deploy only
+[build.ignore]
+  command = "exit 0"
+
 # Production environment variables
 [context.production.environment]
   NEXT_PUBLIC_SITE_URL = "https://toolbank.netlify.app"

@@ -1,0 +1,11 @@
+{
+  "buildTime": "2025-07-31T19:05:07.274Z",
+  "buildSize": "\"Unknown\"",
+  "nodeVersion": "v22.14.0",
+  "deployFolder": ".next",
+  "instructions": [
+    "Drag .next folder to Netlify",
+    "Or use Netlify CLI: netlify deploy --prod --dir=.next",
+    "Or push to GitHub for auto-deploy"
+  ]
+}

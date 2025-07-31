@@ -11,8 +11,10 @@
     "deploy-check": "node scripts/deployment-checklist.js",
     "sitemap": "next-sitemap",
     "seo-check": "npm run deploy-check && npm run sitemap",
-    "deploy": "node deploy.js",
-    "deploy:quick": "git add . && git commit -m \"Quick update\" && git push origin master",
+    "deploy": "node manual-deploy.js",
+    "deploy:manual": "node manual-deploy.js",
+    "deploy:auto": "git add . && git commit -m \"Auto deploy\" && git push origin master",
+    "build:clean": "rm -rf .next out && npm run build",
     "status": "git status",
     "logs": "git log --oneline -10"
   },
