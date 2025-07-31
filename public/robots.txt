@@ -1,0 +1,44 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://toolbank.vercel.app/sitemap.xml
+
+# Disallow admin areas (if any)
+Disallow: /admin/
+Disallow: /api/
+
+# Allow all tools - Health & Fitness
+Allow: /bmi-calculator
+Allow: /calorie-calculator
+Allow: /water-intake-calculator
+Allow: /tdee-calculator
+
+# Allow all tools - Finance & Business
+Allow: /loan-calculator
+Allow: /interest-calculator
+Allow: /tip-calculator
+Allow: /tax-calculator
+Allow: /invoice-generator
+
+# Allow all tools - Developer Tools
+Allow: /qr-code-generator
+Allow: /password-generator
+Allow: /json-formatter
+Allow: /html-minifier
+
+# Allow all tools - Daily Utilities
+Allow: /word-counter
+Allow: /random-number-generator
+Allow: /age-calculator
+Allow: /time-zone-converter
+Allow: /countdown-timer
+Allow: /unit-converter
+
+# Allow legal pages
+Allow: /privacy
+Allow: /terms
+Allow: /contact
+
+# Crawl delay (optional)
+Crawl-delay: 1

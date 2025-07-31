@@ -1,0 +1,153 @@
+[build]
+  publish = ".next"
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
+
+# Production environment variables
+[context.production.environment]
+  NEXT_PUBLIC_SITE_URL = "https://toolbank.netlify.app"
+  NEXT_PUBLIC_GA_MEASUREMENT_ID = "G-XXXXXXXXXX"
+  NEXT_PUBLIC_GTM_ID = "GTM-XXXXXXX"
+  NEXT_PUBLIC_ADSENSE_CLIENT_ID = "ca-pub-XXXXXXXXXXXXXXXX"
+  NODE_ENV = "production"
+
+[context.deploy-preview.environment]
+  NEXT_PUBLIC_SITE_URL = "https://deploy-preview-$REVIEW_ID--toolbank.netlify.app"
+  NEXT_PUBLIC_GA_MEASUREMENT_ID = "G-XXXXXXXXXX"
+  NEXT_PUBLIC_GTM_ID = "GTM-XXXXXXX"
+  NODE_ENV = "development"
+
+[context.branch-deploy.environment]
+  NEXT_PUBLIC_SITE_URL = "https://branch-$BRANCH--toolbank.netlify.app"
+  NODE_ENV = "development"
+
+# Redirect rules for SEO
+[[redirects]]
+  from = "/privacy-policy"
+  to = "/privacy"
+  status = 301
+
+[[redirects]]
+  from = "/terms-of-service"
+  to = "/terms"
+  status = 301
+
+[[redirects]]
+  from = "/contact-us"
+  to = "/contact"
+  status = 301
+
+# Redirect old tool URLs if any
+[[redirects]]
+  from = "/bmi"
+  to = "/bmi-calculator"
+  status = 301
+
+[[redirects]]
+  from = "/loan"
+  to = "/loan-calculator"
+  status = 301
+
+[[redirects]]
+  from = "/qr"
+  to = "/qr-code-generator"
+  status = 301
+
+[[redirects]]
+  from = "/password"
+  to = "/password-generator"
+  status = 301
+
+# Headers for security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; frame-src https://www.google.com https://googleads.g.doubleclick.net"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Content-Type = "application/xml"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Content-Type = "text/plain"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Next.js specific configuration
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[dev]
+  command = "npm run dev"
+  port = 3000
+  publish = ".next"
+
+# Form handling for contact forms
+[forms]
+  settings = true
+
+# Functions configuration
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Build plugins configuration
+[[plugins]]
+  package = "netlify-plugin-sitemap"
+  [plugins.inputs]
+    baseUrl = "https://toolbank.netlify.app"
+    pretty = true
+    trailingSlash = false
+
+# Performance optimizations
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+[build.processing.images]
+  compress = true
