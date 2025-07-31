@@ -10,7 +10,11 @@
     "postbuild": "next-sitemap",
     "deploy-check": "node scripts/deployment-checklist.js",
     "sitemap": "next-sitemap",
-    "seo-check": "npm run deploy-check && npm run sitemap"
+    "seo-check": "npm run deploy-check && npm run sitemap",
+    "deploy": "node deploy.js",
+    "deploy:quick": "git add . && git commit -m \"Quick update\" && git push origin master",
+    "status": "git status",
+    "logs": "git log --oneline -10"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",
